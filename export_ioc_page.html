@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'export_ioc_list' %}">Export IOC</a></li>
+            <li class="breadcrumb-item active">Task #{{ task.info.id }}</li>
+        </ol>
+    </nav>
+
+    <h2>
+        IOC for 
+        <span class="text-primary">
+            {% if task.target.file.name %}
+                {{ task.target.file.name }}
+            {% elif task.target.url %}
+                {{ task.target.url }}
+            {% else %}
+                Unknown
+            {% endif %}
+        </span>
+        (Task #{{ task.info.id }})
+    </h2>
+    <p>Total IOC found: <strong>{{ iocs|length }}</strong></p>
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h5>Download</h5>
+        </div>
+        <div class="card-body">
+            <div class="btn-group" role="group">
+                <a href="{% url 'download_ioc' task.info.id 'json' %}" class="btn btn-outline-primary"><i class="fas fa-code"></i> JSON</a>
+                <a href="{% url 'download_ioc' task.info.id 'csv' %}" class="btn btn-outline-secondary"><i class="fas fa-table"></i> CSV</a>
+                <a href="{% url 'download_ioc' task.info.id 'stix2' %}" class="btn btn-outline-info"><i class="fas fa-shield-alt"></i> STIX 2.0</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Value</th>
+                    <th>Description</th>
+                    <th>Source</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ioc in iocs %}
+                <tr>
+                    <td><span class="badge bg-info">{{ ioc.type }}</span></td>
+                    <td><code>{{ ioc.value }}</code></td>
+                    <td>{{ ioc.description|default:"—" }}</td>
+                    <td>{{ ioc.source|default:"—" }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="4" class="text-center">No IOC found for this analysis.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
