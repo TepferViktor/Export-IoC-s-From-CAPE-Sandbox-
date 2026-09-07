@@ -159,7 +159,7 @@ A simple list of objects with fields:
 ### CSV
 A plain-text table with the same fields, suitable for Excel or other spreadsheet tools.
 
-### STIX 2.0
+### STIX 2.1
 A structured JSON bundle conforming to the STIX 2.1 standard.  
 It includes:
 - **Identity** (CAPE Sandbox as the producer)
