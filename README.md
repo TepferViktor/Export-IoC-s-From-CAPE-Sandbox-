@@ -93,7 +93,7 @@ This adds a new menu entry to the CAPE web interface.
 
 ### 4. Install Optional Dependencies
 
-For **STIX 2.0** export, install the `stix2` library:
+For **STIX 2.1** export, install the `stix2` library:
 
 ```bash
 cd /opt/CAPEv2/web
