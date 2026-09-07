@@ -120,6 +120,7 @@ sudo systemctl restart cape-web.service
 
 1. Open your CAPE web interface.
 2. Click on the new **“Export IOC”** menu item in the top navigation bar.
+<img width="1849" height="465" alt="image" src="https://github.com/user-attachments/assets/bcffa0d2-3e73-4acc-a143-038d2fe131bc" />
 
 You will see a list of all analyses with columns:
 - **ID** – analysis ID
@@ -131,6 +132,8 @@ You will see a list of all analyses with columns:
 ### View and Export IOCs
 
 - Click **“View IOC”** on any analysis row.
+  <img width="1851" height="953" alt="image" src="https://github.com/user-attachments/assets/62d9981d-f73c-455d-9649-f745bca08c13" />
+
 - The detailed IOC page shows:
   - Total number of IOCs found
   - A table with columns: **Type**, **Value**, **Description**, **Source**
